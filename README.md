@@ -158,7 +158,7 @@ sudo chown -R $(id -u):$(id -g) $HOME/.kube/config
 
 **1. Install Calcio operator**
 ```bash
-kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/tigera-operator.yaml
+kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.27.0/manifests/tigera-operator.yaml
 ```
 
 **2. Apply basic Calico IPIP config
@@ -214,7 +214,7 @@ sudo kubeadm token create --print-join-command
 _Check for latest version [here](https://github.com/longhorn/longhorn)_
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/longhorn/longhorn/v1.4.0/deploy/longhorn.yaml
+kubectl apply -f https://raw.githubusercontent.com/longhorn/longhorn/v1.5.3/deploy/longhorn.yaml
 ```
 
 ## Install MetalLB and Contour
@@ -224,7 +224,7 @@ _Note: You can use kube-vip instead of MetalLB as a Cloud Provider to manage ser
 _Check for latest version [here](https://github.com/metallb/metallb)_
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.13.9/config/manifests/metallb-native.yaml
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.13.12/config/manifests/metallb-native.yaml
 ```
 
 Config:
