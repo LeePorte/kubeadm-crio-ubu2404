@@ -214,7 +214,7 @@ sudo kubeadm token create --print-join-command
 _Check for latest version [here](https://github.com/longhorn/longhorn)_
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/longhorn/longhorn/v1.5.3/deploy/longhorn.yaml
+kubectl apply -f https://raw.githubusercontent.com/longhorn/longhorn/v1.6.2/deploy/longhorn.yaml
 ```
 
 ## Install MetalLB and Contour
@@ -224,7 +224,7 @@ _Note: You can use kube-vip instead of MetalLB as a Cloud Provider to manage ser
 _Check for latest version [here](https://github.com/metallb/metallb)_
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.13.12/config/manifests/metallb-native.yaml
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14/config/manifests/metallb-native.yaml
 ```
 
 Config:
@@ -264,17 +264,17 @@ Check https://github.com/kubernetes/kubernetes/releases for available releases
 For bins:
 
 ```bash
-apt-cache policy kubeadm | grep <version, e.g. 1.26>
+apt-cache policy kubeadm | grep <version, e.g. 1.31.0>
 ```
 
 **Step 2. Set environment vars**
 
 ```bash
-K8S_RELEASE="<Release version, e.g. v1.26.2>"
+K8S_RELEASE="<Release version, e.g. v1.31.0>"
 ```
 
 ```bash
-KUBEADM_VER="<kubeadm version, e.g. 1.26.2-00>"
+KUBEADM_VER="<kubeadm version, e.g. 1.31.0-00>"
 ```
 
 ```bash
@@ -316,11 +316,11 @@ kubectl uncordon $NODE_NAME
 **Step 1. Set environment vars**
 
 ```bash
-K8S_RELEASE="<Release version, e.g. v1.26.2>"
+K8S_RELEASE="<Release version, e.g. v1.31.0>"
 ```
 
 ```bash
-KUBEADM_VER="<kubeadm version, e.g. 1.26.2-00>"
+KUBEADM_VER="<kubeadm version, e.g. 1.31.0-00>"
 ```
 
 ```bash
@@ -361,7 +361,7 @@ kubectl uncordon $NODE_NAME
 **Step 1. Set environment vars**
 
 ```bash
-KUBEADM_VER="<kubeadm version, e.g. 1.26.2-00>"
+KUBEADM_VER="<kubeadm version, e.g. 1.31.0-00>"
 ```
 
 **Step 2. Update bins**
