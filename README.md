@@ -64,7 +64,7 @@ EOF
 **1. Set variables for subsequent commands. OS and VERSION are specific to CRI-O URLs**
 ```bash
 export OS=xUbuntu_22.04
-export VERSION=1.28
+export VERSION=1.31
 ```
 
 **2. Configure apt certs and repos**
@@ -264,7 +264,7 @@ Check https://github.com/kubernetes/kubernetes/releases for available releases
 For bins:
 
 ```bash
-apt-cache policy kubeadm | grep <version, e.g. 1.31.0>
+apt-cache policy kubeadm
 ```
 
 **Step 2. Set environment vars**
