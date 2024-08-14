@@ -158,7 +158,7 @@ sudo chown -R $(id -u):$(id -g) $HOME/.kube/config
 
 **1. Install Calcio operator**
 ```bash
-kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.27.0/manifests/tigera-operator.yaml
+kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.28.1/manifests/tigera-operator.yaml
 ```
 
 **2. Apply basic Calico IPIP config
@@ -224,7 +224,7 @@ _Note: You can use kube-vip instead of MetalLB as a Cloud Provider to manage ser
 _Check for latest version [here](https://github.com/metallb/metallb)_
 
 ```bash
-kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14/config/manifests/metallb-native.yaml
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.14.8/config/manifests/metallb-native.yaml
 ```
 
 Config:
