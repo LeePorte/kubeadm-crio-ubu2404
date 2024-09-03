@@ -61,7 +61,7 @@ EOF
 
 ## Install CRI-O on Ubuntu
 
-**1. Set variables for subsequent commands. OS and VERSION are specific to CRI-O URLs**
+**1. Set variables for subsequent commands**
 ```bash
 export KUBERNETES_VERSION=1.31
 export CRIO_VERSION=1.30
@@ -82,7 +82,7 @@ EOF
 curl -fsSL https://pkgs.k8s.io/addons:/cri-o:/stable:/v$CRIO_VERSION/deb/Release.key | sudo gpg --dearmor -o /usr/share/keyrings/cri-o-apt-keyring.gpg
 ```
 
-**3. Update apt and install CRI-O and CRI-O specific runC**
+**3. Update apt and install CRI-O**
 ```bash
 sudo apt update && sudo apt -y install cri-o
 ```
