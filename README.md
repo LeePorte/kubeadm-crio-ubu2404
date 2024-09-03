@@ -63,30 +63,28 @@ EOF
 
 **1. Set variables for subsequent commands. OS and VERSION are specific to CRI-O URLs**
 ```bash
-export OS=xUbuntu_22.04
-export VERSION=1.31
+export KUBERNETES_VERSION=1.31
+export CRIO_VERSION=1.30
 ```
 
 **2. Configure apt certs and repos**
 ```bash
-echo "deb [signed-by=/usr/share/keyrings/libcontainers-archive-keyring.gpg] https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/$OS/ /" | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list
+cat <<EOF | sudo tee /etc/apt/sources.list.d/cri-o.sources
+Enabled: yes
+Types: deb
+URIs: https://pkgs.k8s.io/addons:/cri-o:/stable:/$CRIO_VERSION/deb/
+Suites: /
+Signed-By: /usr/share/keyrings/cri-o-apt-keyring.gpg
+EOF
 ```
 
 ```bash
-echo "deb [signed-by=/usr/share/keyrings/libcontainers-crio-archive-keyring.gpg] https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/$VERSION/$OS/ /" | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable:cri-o:$VERSION.list
-```
-
-```bash
-curl -fsSL https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/$OS/Release.key | sudo gpg --dearmor -o /usr/share/keyrings/libcontainers-archive-keyring.gpg
-```
-
-```bash
-curl -fsSL https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable:/cri-o:/$VERSION/$OS/Release.key | sudo gpg --dearmor -o /usr/share/keyrings/libcontainers-crio-archive-keyring.gpg
+curl -fsSL https://pkgs.k8s.io/addons:/cri-o:/stable:/$CRIO_VERSION/deb/Release.key | sudo gpg --dearmor -o /usr/share/keyrings/cri-o-apt-keyring.gpg
 ```
 
 **3. Update apt and install CRI-O and CRI-O specific runC**
 ```bash
-sudo apt update && sudo apt -y install cri-o cri-o-runc
+sudo apt update && sudo apt -y install cri-o
 ```
 
 **4. Enable and start CRI-O service**
@@ -99,7 +97,6 @@ sudo systemctl enable --now crio
 ```bash
 sudo apt install cri-tools
 sudo systemctl status crio
-sudo crio-status info
 sudo crictl info
 ```
 
@@ -122,10 +119,16 @@ sudo apt-get install -y apt-transport-https ca-certificates curl
 
 **3. Configure apt-get cert and repo**
 ```bash
-curl -fsSL https://pkgs.k8s.io/core:/stable:/v$VERSION/deb/Release.key | sudo gpg --dearmor -o /usr/share/keyrings/kubernetes-apt-keyring.gpg
+curl -fsSL https://pkgs.k8s.io/core:/stable:/v$KUBERNETES_VERSION/deb/Release.key | sudo gpg --dearmor -o /usr/share/keyrings/kubernetes-key.gpg
 ```
 ```bash
-echo "deb [signed-by=/usr/share/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v$VERSION/deb/ /" | sudo tee /etc/apt/sources.list.d/kubernetes.list
+cat <<EOF | sudo tee /etc/apt/sources.list.d/kubernetes.sources
+Enabled: yes
+Types: deb
+URIs: https://pkgs.k8s.io/core:/stable:/v$KUBERNETES_VERSION/deb/
+Suites: /
+Signed-By: /usr/share/keyrings/kubernetes-key.gpg
+EOF
 ```
 
 **4. Update apt and install `kubelet`, `kubeadm`, and `kubectl`**
